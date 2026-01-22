@@ -1706,16 +1706,18 @@
     height: 20px;
   }
 
- /* Botão WhatsApp Flutuante MAIOR - Cores Ace Pack */
+/* Botão WhatsApp Flutuante - Tamanho Reduzido e Discreto */
   .whatsapp-vazado {
     position: fixed;
-    bottom: 40px;
-    left: 40px; 
-    width: 70px; 
-    height: 70px;
+    bottom: 25px;
+    left: 25px; 
     
-    background: rgba(0, 0, 0, 0.6); 
-    border: 3px solid #6b42b6; /* Borda um pouco mais grossa para destacar */
+    /* Tamanho Desktop Reduzido */
+    width: 50px; 
+    height: 50px;
+    
+    background: rgba(0, 0, 0, 0.4); 
+    border: 1.5px solid #6b42b6; 
     color: white;
     
     border-radius: 50%;
@@ -1723,38 +1725,37 @@
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
     text-decoration: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   }
 
   .whatsapp-vazado:hover {
-    transform: scale(1.15);
+    transform: translateY(-5px); /* Efeito de subir levemente */
     background: linear-gradient(135deg, #6b42b6, #4f86c8);
     border-color: transparent;
-    box-shadow: 0 0 40px rgba(107, 66, 182, 0.8);
+    box-shadow: 0 0 20px rgba(107, 66, 182, 0.6);
   }
 
-  /* Ícone maior para acompanhar o botão */
+  /* Ícone proporcional ao botão menor */
   .whatsapp-vazado svg {
-    width: 42px;
-    height: 42px;
+    width: 26px;
+    height: 26px;
     fill: currentColor;
   }
 
-  /* Ajuste Versão MOBILE (Aumentado também) */
+  /* Ajuste Versão MOBILE - Também reduzido */
   @media (max-width: 768px) {
     .whatsapp-vazado {
-      bottom: 25px;
-      left: 25px;
-      width: 60px; /* Tamanho mobile bem visível */
-      height: 0px;
-      border-width: 2px;
+      bottom: 20px;
+      left: 20px;
+      width: 55px; 
+      height: 55px;
     }
     .whatsapp-vazado svg {
-      width: 36px;
-      height: 36px;
+      width: 28px;
+      height: 28px;
     }
   }
   </style>
