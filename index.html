@@ -2310,70 +2310,76 @@
       menu.classList.remove('active');
     }
 
-    // Carousel scroll
+    // --- CARROSSEL DE DEPOIMENTOS (INFINITO) ---
     function scrollCarousel(direction) {
-  const carousel = document.getElementById('carousel');
-  const scrollAmount = carousel.offsetWidth; // Rola a largura visível do container
-  carousel.scrollBy({
-    left: direction * scrollAmount,
-    behavior: 'smooth'
-  });
-}
+      const carousel = document.getElementById('carousel');
+      const scrollAmount = carousel.offsetWidth;
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
 
-    // Story Carousel scroll
+      if (direction === 1 && carousel.scrollLeft >= maxScroll - 10) {
+        // Se estiver no fim e clicar em "próximo", volta ao início
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else if (direction === -1 && carousel.scrollLeft <= 10) {
+        // Se estiver no início e clicar em "anterior", vai ao fim
+        carousel.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    // --- CARROSSEL "O QUE VOCÊ VAI DOMINAR" (INFINITO) ---
     function scrollStoryCarousel(direction) {
       const carousel = document.getElementById('storyCarousel');
-      const cardWidth = 280; // Width of each card
-      const gap = 24; // Gap between cards (1.5rem = 24px)
-      const scrollAmount = (cardWidth + gap) * 2; // Scroll 2 cards at a time
-      
-      carousel.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth'
-      });
+      const cardWidth = 280; 
+      const gap = 24; 
+      const scrollAmount = (cardWidth + gap) * 1; // Ajustado para 1 card por vez para maior suavidade
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+      if (direction === 1 && carousel.scrollLeft >= maxScroll - 10) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else if (direction === -1 && carousel.scrollLeft <= 10) {
+        carousel.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      }
     }
 
-    // Optional: Auto-scroll story carousel
+    // --- AUTO-SCROLL CONFIGURADO ---
     let storyAutoScroll;
     const storyCarousel = document.getElementById('storyCarousel');
-    
-    function startStoryAutoScroll() {
+    const testimonialsCarousel = document.getElementById('carousel');
+
+    function startAutoScroll() {
       storyAutoScroll = setInterval(() => {
-        const maxScroll = storyCarousel.scrollWidth - storyCarousel.clientWidth;
-        if (storyCarousel.scrollLeft >= maxScroll) {
-          storyCarousel.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          scrollStoryCarousel(1);
-        }
-      }, 5000); // Auto-scroll every 5 seconds
+        scrollStoryCarousel(1); // Rola o de Dominar
+        scrollCarousel(1);      // Rola o de Depoimentos
+      }, 5000); // 5 segundos
     }
 
-    function stopStoryAutoScroll() {
+    function stopAutoScroll() {
       clearInterval(storyAutoScroll);
     }
 
-    // Start auto-scroll on page load
-    // startStoryAutoScroll(); // Uncomment to enable auto-scroll
+    // Inicia o auto-scroll ao carregar a página
+    startAutoScroll();
 
-    // Pause auto-scroll on hover
-    if (storyCarousel) {
-      storyCarousel.addEventListener('mouseenter', stopStoryAutoScroll);
-      storyCarousel.addEventListener('mouseleave', () => {
-        // startStoryAutoScroll(); // Uncomment to re-enable auto-scroll after hover
-      });
-    }
+    // Pausa o auto-scroll quando o mouse estiver sobre qualquer um dos carrosséis
+    [storyCarousel, testimonialsCarousel].forEach(carousel => {
+      if (carousel) {
+        carousel.addEventListener('mouseenter', stopAutoScroll);
+        carousel.addEventListener('mouseleave', startAutoScroll);
+      }
+    });
 
     // FAQ accordion
     function toggleFaq(button) {
       const item = button.parentElement;
       const isActive = item.classList.contains('active');
       
-      // Close all
       document.querySelectorAll('.faq-item').forEach(faq => {
         faq.classList.remove('active');
       });
       
-      // Open clicked if it wasn't active
       if (!isActive) {
         item.classList.add('active');
       }
@@ -2392,6 +2398,6 @@
         }
       });
     });
-  </script>
+</script>
 </body>
 </html>
