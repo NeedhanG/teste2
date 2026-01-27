@@ -115,68 +115,65 @@
     transform: scale(1.02);
   }
 
-  /* Water Ripple Pulsating Effect */
+  /* Water Ripple Pulsating Effect - AJUSTADO E SUAVE */
   .btn-ripple {
     position: relative;
-    overflow: visible;
-    animation: pulse-glow 2s ease-in-out infinite;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform, box-shadow;
   }
 
   .btn-ripple::before,
   .btn-ripple::after {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border-radius: 0.75rem;
-    background: linear-gradient(135deg, rgba(107, 66, 182, 0.4), rgba(79, 134, 200, 0.4));
+    inset: 0; /* Começa exatamente no tamanho do botão */
+    border-radius: 0.5rem; /* Mesma borda do botão */
+    background: inherit; /* Pega a cor do botão */
     opacity: 0;
+    z-index: -1;
     pointer-events: none;
   }
 
+  /* Primeira onda */
   .btn-ripple::before {
-    animation: ripple-wave 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: ripple-wave 3s cubic-bezier(0.23, 1, 0.32, 1) infinite;
   }
 
+  /* Segunda onda com atraso */
   .btn-ripple::after {
-    animation: ripple-wave 3s cubic-bezier(0.4, 0, 0.2, 1) infinite 1.5s;
+    animation: ripple-wave 3s cubic-bezier(0.23, 1, 0.32, 1) infinite 1.5s;
   }
 
   @keyframes ripple-wave {
     0% {
-      width: 100%;
-      height: 100%;
-      opacity: 0.8;
-    }
-    50% {
-      width: 140%;
-      height: 160%;
-      opacity: 0.3;
+      transform: scale(1);
+      opacity: 0.6;
     }
     100% {
-      width: 180%;
-      height: 200%;
+      transform: scale(1.4, 1.6); /* Expansão mais controlada */
       opacity: 0;
     }
+  }
+
+  /* Efeito de brilho pulsante no próprio botão */
+  .btn-ripple {
+    animation: pulse-glow 3s ease-in-out infinite;
   }
 
   @keyframes pulse-glow {
     0%, 100% {
       box-shadow: 
-        0 0 20px rgba(107, 66, 182, 0.4),
-        0 0 40px rgba(107, 66, 182, 0.2),
-        0 4px 20px rgba(0, 0, 0, 0.3);
+        0 0 15px rgba(107, 66, 182, 0.3),
+        0 4px 15px rgba(0, 0, 0, 0.4);
+      transform: scale(1);
     }
     50% {
       box-shadow: 
-        0 0 30px rgba(107, 66, 182, 0.6),
-        0 0 60px rgba(107, 66, 182, 0.4),
-        0 0 90px rgba(79, 134, 200, 0.3),
-        0 8px 30px rgba(0, 0, 0, 0.4);
-      transform: translateY(-2px);
+        0 0 25px rgba(107, 66, 182, 0.5),
+        0 0 45px rgba(79, 134, 200, 0.2),
+        0 6px 20px rgba(0, 0, 0, 0.5);
+      transform: scale(1.02);
     }
   }
 
@@ -994,7 +991,7 @@
     }
 
     .price-current small {
-      font-size: 1rem;
+      font-size: 1.75rem;
       color: rgba(255, 255, 255, 0.6);
     }
 
@@ -1678,33 +1675,39 @@
       }
     }
 
-    /* Estilo do Botão Instagram na seção Sobre */
+ /* Botão Instagram - Estilo Minimalista Roxo */
   .btn-instagram-sobre {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.875rem 1.5rem;
-    border-radius: 0.5rem;
+    gap: 12px;
+    padding: 12px 28px;
+    border-radius: 50px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 15px;
     color: white !important;
     text-decoration: none;
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: rgba(0, 0, 0, 0.4); 
+    border: 1.5px solid #6b42b6; 
+    backdrop-filter: blur(10px);
     margin: 1.5rem 0 2rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.2);
+  }
+
+  /* ESTA PARTE CORRIGE O ÍCONE */
+  .btn-instagram-sobre svg {
+    width: 22px;
+    height: 22px;
+    fill: none !important; /* Isso garante que o ícone NÃO fique um bloco branco */
+    stroke: white;
+    stroke-width: 2;
   }
 
   .btn-instagram-sobre:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(220, 39, 67, 0.4);
-    filter: brightness(1.1);
+    background: #6b42b6;
+    box-shadow: 0 0 20px rgba(107, 66, 182, 0.5);
   }
 
-  .btn-instagram-sobre svg {
-    width: 20px;
-    height: 20px;
-  }
 
 /* Botão WhatsApp Flutuante - Tamanho Reduzido e Discreto */
   .whatsapp-vazado {
@@ -1832,7 +1835,7 @@
               <div class="avatar">S</div>
             </div>
             <div class="social-text">
-              <strong>+2.500</strong> alunos transformados
+              <strong>+1.700</strong> alunos transformados
             </div>
           </div>
         </div>
@@ -2001,15 +2004,14 @@
             Hoje, após atingir seis dígitos no audiovisual, criei meu curso para ensinar exatamente o que eu gostaria de ter aprendido quando comecei — de forma simples, prática e transformadora.
           </p>
 
-          <!-- Botão Instagram -->
-          <a href="https://www.instagram.com/murilofilmsbr" target="_blank" rel="noopener noreferrer" class="btn-instagram-sobre">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-            Acompanhe no Instagram
-          </a>
+         <a href="https://www.instagram.com/murilofilmsbr" target="_blank" rel="noopener noreferrer" class="btn-instagram-sobre">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+  Acompanhe no Instagram
+</a>
 
           <div class="about-stats">
             <div class="stat-item">
@@ -2017,7 +2019,7 @@
               <span>De Experiência</span>
             </div>
             <div class="stat-item">
-              <h4>2.5k+</h4>
+              <h4>1.7k+</h4>
               <span>Alunos Felizes</span>
             </div>
             <div class="stat-item">
@@ -2203,10 +2205,16 @@
         <div class="mentoria-grid">
           <div class="mentoria-price">
             <p class="price-label">INVESTIMENTO</p>
-            <p class="price-current">R$297<small>,00</small></p>
+            <p class="price-current">R$297,<small>00</small></p>
             <p class="price-installment">ou 12x de R$34,53 no cartão</p>
             
             <div class="payment-methods">
+              
+  <div class="payment-icon" title="PIX">
+    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M256 31.8501C246.331 31.8501 237.059 35.6923 230.224 42.5273L42.5273 230.224C28.3283 244.423 28.3283 267.577 42.5273 281.776L230.224 469.473C237.059 476.308 246.331 480.15 256 480.15C265.669 480.15 274.941 476.308 281.776 469.473L469.473 281.776C483.672 267.577 483.672 244.423 469.473 230.224L281.776 42.5273C274.941 35.6923 265.669 31.8501 256 31.8501ZM256 81.6521L430.348 256L256 430.348L81.6521 256L256 81.6521ZM177.514 177.514C173.045 177.514 168.577 179.22 165.166 182.631C158.344 189.453 158.344 200.504 165.166 207.326L213.841 256L165.166 304.674C158.344 311.496 158.344 322.547 165.166 329.369C171.988 336.191 183.039 336.191 189.861 329.369L256 263.23L322.139 329.369C328.961 336.191 340.012 336.191 346.834 329.369C353.656 322.547 353.656 311.496 346.834 304.674L298.159 256L346.834 207.326C353.656 200.504 353.656 189.453 346.834 182.631C340.012 179.22 335.544 177.514 331.074 177.514C326.605 177.514 322.137 179.22 318.726 182.631L256 248.77L193.274 182.631C189.863 179.22 185.395 177.514 180.926 177.514H177.514Z" fill="white"/>
+    </svg>
+  </div>
               <div class="payment-icon" title="Boleto">
                 <svg viewBox="0 0 48 32" fill="white">
                   <rect x="2" y="6" width="2" height="20"/>
@@ -2269,7 +2277,7 @@
     </svg>
 </a>
 
-          <p class="vagas">Vagas Ilimitadas - Apenas 20 por turma</p>
+          <p class="vagas">VAGAS LIMITADAS</p>
         </div>
       </div>
     </div>
