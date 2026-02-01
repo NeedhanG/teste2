@@ -274,7 +274,7 @@
     object-fit: contain;
     opacity: 0.8;
   }
- /* Container do PIX - IGUAL ao tamanho de todos os outros */
+ /* Container do PIX - MESMO TAMANHO DOS OUTROS */
 .payment-icon.pix-box {
   width: 45px; 
   height: 38px;
@@ -282,22 +282,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible; /* Permite que a imagem "saia" um pouco do box se necessário */
+  overflow: visible; /* Permite que a imagem cresça para fora do limite */
+  position: relative;
+  z-index: 5; /* Garante que a logo fique por cima de tudo ao crescer */
 }
 
-/* Imagem do PIX - FORÇANDO TAMANHO GRANDE */
+/* Imagem do PIX - GRANDE NO DESKTOP E MOBILE */
 .payment-icon.pix-box .payment-img {
   width: 100% !important;
   height: 100% !important;
   object-fit: contain;
   padding: 0px !important;
+  display: block;
   
-  /* O segredo está aqui: Aumenta a escala da imagem */
-  transform: scale(1.5) !important; 
+  /* ESCALA: 1.6 para ficar bem grande e visível */
+  transform: scale(1.6) !important; 
   
   filter: none !important;
   opacity: 1 !important;
-  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Ajuste fino para Mobile (Telas pequenas) */
+@media (max-width: 768px) {
+  .payment-icon.pix-box {
+    /* Mantém o card no tamanho padrão do mobile se ele mudar */
+    width: 45px;
+    height: 38px;
+  }
+  
+  .payment-icon.pix-box .payment-img {
+    /* No mobile 1.5 costuma ser o limite ideal para não encostar nos outros ícones */
+    transform: scale(1.5) !important;
+  }
 }
 
   .badge {
