@@ -1589,6 +1589,28 @@
       height: 28px;
     }
   }
+  /* Ajuste de espaçamento para Mobile - Títulos destacados na imagem */
+@media (max-width: 768px) {
+  /* Reduz o espaço geral no topo e base de cada seção (as áreas vazias acima dos títulos) */
+  .section {
+    padding: 2rem 0 !important; /* Antes era 6rem, o que causava muito espaço */
+  }
+
+  /* Reduz o espaço entre o título principal e o conteúdo que vem abaixo dele */
+  .section-header {
+    margin-bottom: 1.5rem !important; /* Antes era 4rem */
+  }
+
+  /* Ajuste específico para a Imagem 1: aproxima o título do vídeo de cima */
+  .hero-content {
+    padding-bottom: 1rem !important;
+  }
+  
+  /* Ajuste específico para a Imagem 2: remove espaço extra no topo da CTA final */
+  .final-cta {
+    padding-top: 1rem !important;
+  }
+}
   </style>
 </head>
 <body>
