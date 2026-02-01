@@ -274,6 +274,27 @@
     object-fit: contain;
     opacity: 0.8;
   }
+ /* Container do PIX - IGUAL ao tamanho de todos os outros */
+.payment-icon.pix-box {
+  width: 45px; 
+  height: 38px;
+  /* Borda padrão como a dos outros ícones */
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+}
+
+/* Imagem do PIX - Aumentada ao máximo dentro do card */
+.payment-icon.pix-box .payment-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  /* Padding 0 faz a imagem encostar nas bordas e parecer maior */
+  padding: 0px !important; 
+  display: block;
+  
+  /* REMOVIDO: Filtros de cor e brilho para manter a cor original */
+  filter: none !important;
+  opacity: 1 !important;
+}
 
   .badge {
       display: inline-flex;
@@ -740,16 +761,16 @@
 }
 
 /* Estilo do Subtítulo (Nome) */
-  .about-name {
-    display: block;
-    font-size: 1.25rem;
-    color: var(--secondary); /* Usa o azul/roxo do seu tema */
-    font-weight: 600;
-    margin-top: -1rem; /* Aproxima do título principal */
-    margin-bottom: 1.5rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
+.about-name {
+  display: block;
+  font-size: 1.25rem;
+  color: var(--secondary); /* Usa o azul/roxo do seu tema */
+  font-weight: 600;
+  margin-top: -1rem; /* Aproxima do título principal */
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: none; /* Removido o uppercase, agora respeita como você digitar no HTML */
+}
 
 .about-stats {
   display: grid;
@@ -1720,7 +1741,7 @@
       <div class="story-card-overlay">
         <h3 class="story-card-title">Elementos Visuais Premium</h3>
         <p class="story-card-description">
-          100+ elementos visuais, 50 backgrounds animados e overlays profissionais
+          100+ elementos visuais, 50+ backgrounds animados e overlays profissionais
         </p>
       </div>
     </div>
@@ -1807,7 +1828,7 @@
             </div>
             <div class="stat-item">
               <h4>1.7k+</h4>
-              <span>Alunos Felizes</span>
+              <span>Alunos Satisfeitos</span>
             </div>
             <div class="stat-item">
               <h4>24/7</h4>
@@ -1847,11 +1868,9 @@
             <p class="price-installment">ou 6x de R$5,83 no cartão</p>
             
             <div class="payment-methods">
-              <div class="payment-icon" title="PIX">
-                <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M256 31.8501C246.331 31.8501 237.059 35.6923 230.224 42.5273L42.5273 230.224C28.3283 244.423 28.3283 267.577 42.5273 281.776L230.224 469.473C237.059 476.308 246.331 480.15 256 480.15C265.669 480.15 274.941 476.308 281.776 469.473L469.473 281.776C483.672 267.577 483.672 244.423 469.473 230.224L281.776 42.5273C274.941 35.6923 265.669 31.8501 256 31.8501ZM256 81.6521L430.348 256L256 430.348L81.6521 256L256 81.6521ZM177.514 177.514C173.045 177.514 168.577 179.22 165.166 182.631C158.344 189.453 158.344 200.504 165.166 207.326L213.841 256L165.166 304.674C158.344 311.496 158.344 322.547 165.166 329.369C171.988 336.191 183.039 336.191 189.861 329.369L256 263.23L322.139 329.369C328.961 336.191 340.012 336.191 346.834 329.369C353.656 322.547 353.656 311.496 346.834 304.674L298.159 256L346.834 207.326C353.656 200.504 353.656 189.453 346.834 182.631C340.012 179.22 335.544 177.514 331.074 177.514C326.605 177.514 322.137 179.22 318.726 182.631L256 248.77L193.274 182.631C189.863 179.22 185.395 177.514 180.926 177.514H177.514Z" fill="white"/>
-              </svg>
-            </div>
+ <div class="payment-icon pix-box" title="PIX">
+  <img src="assets/pix-logo.png" alt="PIX" class="payment-img">
+</div>
               <div class="payment-icon" title="Boleto">
                 <svg viewBox="0 0 48 32" fill="white">
                   <rect x="2" y="6" width="2" height="20"/>
