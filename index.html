@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ace Pack - Transforme Seus Resultados</title>
-  <meta name="description" content="O metodo completo para acelerar seus resultados. Acesse agora o Ace Pack e a Mentoria exclusiva.">
+  <meta name="description" content="O metodo completo para acelerar seus resultados. Acesse agora o Ace Packa e tenha os melhores resultados.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -225,18 +225,6 @@
   margin-bottom: 0.5rem;
   }
 
-  .mentoria-price {
-  position: relative;
-  padding: 3rem 4rem;
-  border-radius: 1.5rem;
-  background: linear-gradient(135deg, rgba(107, 66, 182, 0.1), rgba(79, 134, 200, 0.1));
-  border: 1px solid rgba(107, 66, 182, 0.3);
-  backdrop-filter: blur(10px);
-  max-width: 500px;
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  }
 
   /* Payment Methods */
   .price-installment {
@@ -503,17 +491,60 @@
   width: 100%;
 }
 
-.avatars { display: flex; }
-.avatar {
-  width: 2.5rem; height: 2.5rem; border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  border: 2px solid black; display: flex; align-items: center;
-  justify-content: center; font-size: 0.75rem; font-weight: 700; margin-left: -0.75rem;
+/* Container da prova social */
+.hero-social {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem; /* Espaço reduzido entre fotos e texto */
+  margin-top: 0.5rem;
+  flex-wrap: nowrap; /* Garante que fiquem na mesma linha */
 }
-.avatar:first-child { margin-left: 0; }
-.social-text { color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; }
-.social-text strong { color: white; }
 
+.avatars {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-img {
+  width: 1.7rem; /* Tamanho pequeno e discreto */
+  height: 1.7rem;
+  border-radius: 50%;
+  border: 1.5px solid #000;
+  object-fit: cover;
+  margin-left: -0.7rem; /* Sobreposição para economizar espaço horizontal */
+  background: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.avatar-img:first-child {
+  margin-left: 0;
+}
+
+/* Efeito sutil ao passar o mouse */
+.avatar-img:hover {
+  transform: translateY(-3px);
+  z-index: 10;
+}
+
+.social-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem; /* Texto levemente menor para acompanhar as fotos */
+  white-space: nowrap;
+}
+
+/* Ajuste de layout Desktop para o vídeo não descer */
+@media (min-width: 1024px) {
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-text {
+    max-width: 520px; /* Previne que o conteúdo da esquerda empurre o vídeo */
+  }
+}
 /* Video Wrapper */
 .video-wrapper {
   position: relative; border-radius: 1rem; overflow: hidden;
@@ -536,12 +567,13 @@
 @media (min-width: 1024px) {
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    text-align: left;
+    grid-template-columns: 1fr 1fr; /* Divide a tela em duas colunas iguais */
+    gap: 2rem;
     align-items: center;
+    text-align: left;
   }
-  .hero-text h1 { font-size: 3.75rem; }
+  
+  /* Remove as ordens do mobile para o desktop */
   .hero-text h1, .hero-description, .hero-video, .hero-buttons, .hero-social {
     order: unset;
   }
@@ -906,13 +938,6 @@
   .price-current {
     font-size: 3rem !important;
   }
-  .mentoria-price {
-    padding: 2rem;
-    max-width: 100%;
-  }
-  .mentoria-price .price-current {
-    font-size: 3rem !important;
-  }
   }
 
   @media (min-width: 768px) {
@@ -1019,141 +1044,6 @@
     flex: 0 0 calc(33.333% - 1rem); /* Desktop: 3 por vez */
   }
 }
-
-    /* Mentoria Section */
-    .mentoria-bg {
-      background: linear-gradient(to bottom, var(--background), #0a0a0a, var(--background));
-    }
-
-    .mentoria-features {
-      display: grid;
-      gap: 1rem;
-      max-width: 56rem;
-      margin: 0 auto 3rem;
-    }
-
-    .mentoria-feature {
-      padding: 1rem;
-      border-radius: 0.75rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
-    }
-
-    .mentoria-feature-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 0.5rem;
-      background: rgba(79, 134, 200, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 0.75rem;
-    }
-
-    .mentoria-feature-icon svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      color: var(--secondary);
-    }
-
-    .mentoria-feature h3 {
-      font-size: 0.875rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-
-    .mentoria-feature p {
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .mentoria-card {
-      max-width: 42rem;
-      margin: 0 auto;
-      border-radius: 1rem;
-      overflow: hidden;
-      border: 1px solid rgba(79, 134, 200, 0.3);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-    }
-
-  .mentoria-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  }
-
-    .mentoria-benefits h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .mentoria-benefits ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .mentoria-benefits li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-
-    .mentoria-check {
-      width: 1rem;
-      height: 1rem;
-      border-radius: 50%;
-      background: rgba(79, 134, 200, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 0.125rem;
-    }
-
-    .mentoria-check svg {
-      width: 0.625rem;
-      height: 0.625rem;
-      color: var(--secondary);
-    }
-
-    .mentoria-benefits span {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.875rem;
-    }
-
-    .mentoria-price {
-      text-align: center;
-    }
-
-  .mentoria-price .price-current {
-  font-size: 3.5rem !important;
-  }
-
-    .mentoria-price .btn {
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-
-    .mentoria-price .vagas {
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 0.75rem;
-    }
-
-    @media (min-width: 768px) {
-      .mentoria-features {
-        grid-template-columns: repeat(4, 1fr);
-      }
-      .mentoria-grid {
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-      }
-    }
 
     /* FAQ Section */
     .faq-container {
@@ -1673,7 +1563,6 @@
           <a href="#sobre">Sobre</a>
           <a href="#ace-pack">Ace Pack</a>
           <a href="#depoimentos">Depoimentos</a>
-          <a href="#mentoria">Mentoria</a>
           <a href="#faq">FAQ</a>
         </nav>
 
@@ -1685,7 +1574,6 @@
           <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
           <a href="#ace-pack" onclick="closeMobileMenu()">Ace Pack</a>
           <a href="#depoimentos" onclick="closeMobileMenu()">Depoimentos</a>
-          <a href="#mentoria" onclick="closeMobileMenu()">Mentoria</a>
           <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
         </div>
       </div>
@@ -1722,18 +1610,21 @@
            <!-- <a href="#sobre" class="btn btn-outline btn-lg">Saiba Mais</a> -->
           </div>
 
-          <div class="hero-social">
-            <div class="avatars">
-              <div class="avatar">G</div>
-              <div class="avatar">R</div>
-              <div class="avatar">A</div>
-              <div class="avatar">L</div>
-              <div class="avatar">S</div>
-            </div>
-            <div class="social-text">
-              <strong>+1.700</strong> alunos transformados
-            </div>
-          </div>
+        <div class="hero-social">
+  <div class="avatars">
+    <!-- Substitua o src pelo caminho das fotos reais (ex: assets/foto1.jpg) -->
+    <img src="assets/aluno1.jpg" alt="Aluno" class="avatar-img">
+    <img src="assets/aluno2.jpg" alt="Aluno" class="avatar-img">
+    <img src="assets/aluno3.jpg" alt="Aluno" class="avatar-img">
+    <img src="assets/aluno4.jpg" alt="Aluno" class="avatar-img">
+    <img src="assets/aluno5.jpg" alt="Aluno" class="avatar-img">
+    <img src="assets/aluno6.jpg" alt="Aluno" class="avatar-img">
+    <img src="assets/aluno7.jpg" alt="Aluno" class="avatar-img">
+  </div>
+  <div class="social-text">
+    <strong>+1.700</strong> alunos transformados
+  </div>
+</div>
         </div>
 
         <div class="hero-video">
@@ -2081,106 +1972,6 @@
             </div>
         </div>
     </div>
-</section>
-
-
-  <!-- Mentoria Section -->
-<section class="section mentoria-bg" id="mentoria">
-  <div>
-    <div class="section-bg"></div>
-    <div class="glow-2" style="top: 25%; left: 0; bottom: auto; right: auto;"></div>
-    <div class="glow-1" style="bottom: 25%; right: 0; top: auto; left: auto;"></div>
-  </div>
-
-  <div class="container section-content">
-    <div class="section-header">
-      <h2>Mentoria <span class="text-gradient" style="background: linear-gradient(to right, #4f86c8, #6b42b6); -webkit-background-clip: text; background-clip: text;">Exclusiva</span></h2>
-      <p>Para quem quer resultados ainda mais rápidos com acompanhamento personalizado e suporte direto.</p>
-    </div>
-
-    
-    </div>
-
-      <div class="mentoria-card">
-        <div class="mentoria-grid">
-          <div class="mentoria-price">
-            <p class="price-label">INVESTIMENTO</p>
-            <p class="price-current">R$297,<small>00</small></p>
-            <p class="price-installment">ou 12x de R$34,53 no cartão</p>
-            
-            <div class="payment-methods">
-              <div class="payment-icon" title="PIX">
-                <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M256 31.8501C246.331 31.8501 237.059 35.6923 230.224 42.5273L42.5273 230.224C28.3283 244.423 28.3283 267.577 42.5273 281.776L230.224 469.473C237.059 476.308 246.331 480.15 256 480.15C265.669 480.15 274.941 476.308 281.776 469.473L469.473 281.776C483.672 267.577 483.672 244.423 469.473 230.224L281.776 42.5273C274.941 35.6923 265.669 31.8501 256 31.8501ZM256 81.6521L430.348 256L256 430.348L81.6521 256L256 81.6521ZM177.514 177.514C173.045 177.514 168.577 179.22 165.166 182.631C158.344 189.453 158.344 200.504 165.166 207.326L213.841 256L165.166 304.674C158.344 311.496 158.344 322.547 165.166 329.369C171.988 336.191 183.039 336.191 189.861 329.369L256 263.23L322.139 329.369C328.961 336.191 340.012 336.191 346.834 329.369C353.656 322.547 353.656 311.496 346.834 304.674L298.159 256L346.834 207.326C353.656 200.504 353.656 189.453 346.834 182.631C340.012 179.22 335.544 177.514 331.074 177.514C326.605 177.514 322.137 179.22 318.726 182.631L256 248.77L193.274 182.631C189.863 179.22 185.395 177.514 180.926 177.514H177.514Z" fill="white"/>
-              </svg>
-            </div>
-              <div class="payment-icon" title="Boleto">
-                <svg viewBox="0 0 48 32" fill="white">
-                  <rect x="2" y="6" width="2" height="20"/>
-                  <rect x="6" y="6" width="3" height="20"/>
-                  <rect x="11" y="6" width="2" height="20"/>
-                  <rect x="15" y="6" width="4" height="20"/>
-                  <rect x="21" y="6" width="2" height="20"/>
-                  <rect x="25" y="6" width="3" height="20"/>
-                  <rect x="30" y="6" width="2" height="20"/>
-                  <rect x="34" y="6" width="4" height="20"/>
-                  <rect x="40" y="6" width="2" height="20"/>
-                  <rect x="44" y="6" width="2" height="20"/>
-                </svg>
-              </div>
-              <div class="payment-icon" title="Visa">
-                <svg viewBox="0 0 48 32" fill="white">
-                  <text x="24" y="22" font-size="18" font-weight="bold" text-anchor="middle" fill="white">VISA</text>
-                </svg>
-              </div>
-              <div class="payment-icon" title="Mastercard">
-                <svg viewBox="0 0 48 32" fill="none">
-                  <circle cx="18" cy="16" r="10" fill="#EB001B" opacity="0.8"/>
-                  <circle cx="30" cy="16" r="10" fill="#F79E1B" opacity="0.8"/>
-                </svg>
-              </div>
-              <div class="payment-icon" title="American Express">
-                <svg viewBox="0 0 48 32" fill="white">
-                  <text x="24" y="20" font-size="14" font-weight="bold" text-anchor="middle" fill="white">AMEX</text>
-                </svg>
-              </div>
-              <div class="payment-icon" title="PayPal">
-                <svg viewBox="0 0 48 32" fill="white">
-                  <text x="24" y="20" font-size="12" font-weight="bold" text-anchor="middle" fill="white">PayPal</text>
-                </svg>
-              </div>
-              <div class="payment-icon" title="Google Pay">
-                <svg viewBox="0 0 48 32" fill="white">
-                  <text x="24" y="20" font-size="11" font-weight="bold" text-anchor="middle" fill="white">GPay</text>
-                </svg>
-              </div>
-            </div>
-<a href="https://pay.cakto.com.br/rwqfspi_716460"
-   class="btn btn-secondary btn-lg btn-ripple"
-   target="_blank"
-   rel="noopener noreferrer">
-
-    Quero a Mentoria
-
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="20"
-         height="20"
-         viewBox="0 0 24 24"
-         fill="none"
-         stroke="currentColor"
-         stroke-width="2"
-         stroke-linecap="round"
-         stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-    </svg>
-</a>
-
-          <p class="vagas">VAGAS LIMITADAS</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 
