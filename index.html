@@ -1599,6 +1599,48 @@
     letter-spacing: -0.02em;     /* Opcional: deixa as letras um pouco mais juntas para um visual mais premium */
   }
 }
+/* Ajuste de espaçamento para as seções e subtítulos no Desktop */
+@media (min-width: 768px) {
+  /* 1. Reduz o espaço geral entre uma seção e outra */
+  .section {
+    padding: 3rem 0 !important; /* Estava em 6rem, reduzimos pela metade */
+  }
+/* Ajuste do Título Principal (Hero) e Descrição no Desktop */
+@media (min-width: 768px) {
+  .hero-text {
+    gap: 0.8rem !important; /* Reduz o espaço entre o título e o parágrafo abaixo */
+  }
+
+  .hero-text h1 {
+    line-height: 1.0 !important; /* Deixa as linhas do título coladas */
+    margin-bottom: 0 !important;
+  }
+
+  .hero-description {
+    line-height: 1.4 !important; /* Melhora a leitura do texto menor */
+    margin-top: 0 !important;
+  }
+}
+  /* 2. Reduz o espaço entre o bloco de título e o conteúdo abaixo dele */
+  .section-header {
+    margin-bottom: 2.5rem !important; /* Estava em 4rem */
+  }
+
+  /* 3. Aproxima o título principal (H2) do subtítulo que vem logo abaixo */
+  .section-header h2 {
+    margin-bottom: 0.5rem !important; /* Estava em 1.5rem */
+    line-height: 1.1 !important;      /* Mantém o texto "coladinho" se quebrar linha */
+  }
+
+  /* 4. Ajuste específico para a seção de fechamento (Pronto para transformar...) */
+  .final-cta {
+    padding: 2rem 0 !important;
+  }
+  
+  .final-cta h2 {
+    margin-bottom: 0.5rem !important;
+  }
+}
   </style>
 </head>
 <body>
